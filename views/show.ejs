@@ -6,17 +6,17 @@
       <form action="/items/<%= data.item_id %>?_method=PUT" method="POST">
         <div class="mb-3">
           <label for="itemName">Item Name:</label>
-          <input class="form-control" type="text" name="item[name]" id="itemName" value="<%= data.item_name %>">
+          <input class="form-control" type="text" name="item[name]" id="itemName" value="<%= data.item_name %>" required>
         </div>
 
         <div class="mb-3">
           <label for="itemQty">Item Quantity:</label>
-          <input class="form-control" type="number" step="1" name="item[qty]" id="itemQty" min="0" value="<%= data.item_qty %>">
+          <input class="form-control" type="number" step="1" name="item[qty]" id="itemQty" min="0" value="<%= data.item_qty %>" required>
         </div>
 
         <div class="mb-3">
           <label for="itemAmount">Item Amount:</label>
-          <input class="form-control" type="number" step=".01" name="item[amount]" id="itemAmount" min="0" value="<%= data.item_amount %>">
+          <input class="form-control" type="number" step=".01" name="item[amount]" id="itemAmount" min="0" value="<%= data.item_amount %>" required>
         </div>
         <div class="mb-3 text-center">
           <button class="btn btn-lg btn-success">Submit</button><br><small><a href="/"">home</a></small>

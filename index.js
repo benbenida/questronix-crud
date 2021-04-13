@@ -21,6 +21,7 @@ connection.connect((err) => {
   if (err) throw err
 })
 
+// Root route... just redirect to /items
 app.get("/", (req, res) => {
   res.redirect("/items")
 })
@@ -46,6 +47,7 @@ app.get("/items/:id", (req, res) => {
   // res.render("show")
 })
 
+// POST NEW item
 app.post("/items", (req, res) => {
   const {item} = req.body;
   connection.query(`INSERT INTO items(item_name, item_qty, item_amount) values ("${item.name}", ${item.qty}, ${item.amount});`,
@@ -55,6 +57,7 @@ app.post("/items", (req, res) => {
   })
 });
 
+// PUT UPDATE item
 app.put("/items/:id", async (req, res) => {
   const { item } = req.body;
   console.log(item)
@@ -65,6 +68,7 @@ app.put("/items/:id", async (req, res) => {
   })
 })
 
+// DELETE DELETE item
 app.delete("/items/:id", (req, res) => {
   connection.query(`DELETE FROM items WHERE item_id=${req.params.id}`, function(err, row, fields) {
     if (err) throw err;
