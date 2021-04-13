@@ -1,0 +1,17 @@
+<%- include("partials/header") %> 
+
+<h1>Edit page</h1><small><a href="/">home</a></small>
+<form action="/items/<%= data.item_id %>?_method=PUT" method="POST">
+  <label for="itemName">Item Name:</label>
+  <input type="text" name="item[name]" id="itemName" value="<%= data.item_name %>">
+
+  <label for="itemQty">Item Quantity:</label>
+  <input type="number" step="1" name="item[qty]" id="itemQty" min="0" value="<%= data.item_qty %>">
+
+  <label for="itemAmount">Item Amount:</label>
+  <input type="number" step=".01" name="item[amount]" id="itemAmount" min="0" value="<%= data.item_amount %>">
+
+  <button>Submit</button>
+</form>
+
+<%- include("partials/footer") %> 

@@ -1,8 +1,31 @@
 <%- include("partials/header") %> 
 <h1>Inventory</h1>
+<form action="/items" method="POST">
+  <label for="itemName">Item Name:</label>
+  <input type="text" name="item[name]" id="itemName">
+
+  <label for="itemQty">Item Quantity:</label>
+  <input type="number" step="1" name="item[qty]" id="itemQty" min="0">
+
+  <label for="itemAmount">Item Amount:</label>
+  <input type="number" step=".01" name="item[amount]" id="itemAmount" min="0">
+
+  <button>Submit</button>
+</form>
 <ul>
   <% for (let row of data) { %>
-    <li><h3><%= row.item_name %> </h3></li>
+    <li>
+      <h3>
+        <a href="/items/<%= row.item_id %>">
+          <small>( <%= row.item_id %> )</small>
+          <%= row.item_name %> 
+        </a>
+      </h3>
+      <ul>
+        <li>Item quantity: <%= row.item_qty %> </li>
+        <li>Item amount: <%= row.item_amount %> </li>
+      </ul>
+    </li>
   <% } %>  
 </ul>
 <%- include("partials/footer") %> 
