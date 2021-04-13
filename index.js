@@ -60,4 +60,11 @@ app.put("/items/:id", async (req, res) => {
   })
 })
 
+app.delete("/items/:id", (req, res) => {
+  connection.query(`DELETE FROM items WHERE item_id=${req.params.id}`, function(err, row, fields) {
+    if (err) throw err;
+    res.redirect("/")
+  })
+})
+
 app.listen(3000, () => console.log("Serving at port 3000"))

@@ -24,6 +24,11 @@
       <ul>
         <li>Item quantity: <%= row.item_qty %> </li>
         <li>Item amount: <%= row.item_amount %> </li>
+        <li>
+          <form action="/items/<%= row.item_id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+          </form>
+        </li>
       </ul>
     </li>
   <% } %>  
