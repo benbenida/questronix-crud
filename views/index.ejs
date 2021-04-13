@@ -1,36 +1,46 @@
 <%- include("partials/header") %> 
-<h1>Inventory</h1>
-<form action="/items" method="POST">
-  <label for="itemName">Item Name:</label>
-  <input type="text" name="item[name]" id="itemName">
+<div class="container content">
+  <div class="row">
+    <div class="col-md">
+      <div class="container">
+        <div class="row d-flex justify-content-between align-items-center">
+          <div class="col-auto">
+            <h1>Inventory</h1>
+          </div>
+          <div class="col-auto">
+            <a href="/items/new" class="btn btn-primary d-block">Add New Product</a>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+          <div class="col-md-3 fw-bold">Item Name</div>
+          <div class="col-md-1 fw-bold">Item Quantity</div>
+          <div class="col-md-1 fw-bold">Item Amount</div>
+          <div class="col-md-2 fw-bold">Item Controls</div>
+        </div>
+        <% for (let row of data) { %>
+          <div class="row d-flex justify-content-between">
+            <div class="col-md-3">
+              <h5>
+                <%= row.item_name %> 
+              </h5>
+            </div>
+            <div class="col-md-1">
+              <%= row.item_qty %>
+            </div>
+            <div class="col-md-1">
+              <%= row.item_amount %>
+            </div>
+            <div class="col-md-2">
+              <a href="/items/<%= row.item_id %>">Edit</a>
+              <form action="/items/<%= row.item_id %>?_method=DELETE" method="POST" class="d-inline">
+                <button class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </div>
+          </div>
+        <% } %>  
+      </div>
+    </div>
+  </div>
+</div>
 
-  <label for="itemQty">Item Quantity:</label>
-  <input type="number" step="1" name="item[qty]" id="itemQty" min="0">
-
-  <label for="itemAmount">Item Amount:</label>
-  <input type="number" step=".01" name="item[amount]" id="itemAmount" min="0">
-
-  <button>Submit</button>
-</form>
-<ul>
-  <% for (let row of data) { %>
-    <li>
-      <h3>
-        <a href="/items/<%= row.item_id %>">
-          <small>( <%= row.item_id %> )</small>
-          <%= row.item_name %> 
-        </a>
-      </h3>
-      <ul>
-        <li>Item quantity: <%= row.item_qty %> </li>
-        <li>Item amount: <%= row.item_amount %> </li>
-        <li>
-          <form action="/items/<%= row.item_id %>?_method=DELETE" method="POST">
-            <button>Delete</button>
-          </form>
-        </li>
-      </ul>
-    </li>
-  <% } %>  
-</ul>
 <%- include("partials/footer") %> 

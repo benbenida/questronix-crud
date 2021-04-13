@@ -1,0 +1,25 @@
+<%- include("partials/header") %> 
+<div class="container content">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <h1>Add New Product</h1>
+      <form action="/items" method="POST">
+        <div class="mb-3">
+          <label for="itemName">Item Name:</label>
+          <input class="form-control" type="text" name="item[name]" id="itemName" required>
+        </div>
+        <div class="mb-3">
+          <label for="itemQty">Item Quantity:</label>
+          <input class="form-control" type="number" step="1" name="item[qty]" id="itemQty" min="0" required>
+        </div>
+        <div class="mb-3">
+          <label for="itemAmount">Item Amount:</label>
+          <input class="form-control" type="number" step=".01" name="item[amount]" id="itemAmount" min="0" required>
+        </div>
+        <button class="btn btn-primary">Add new product</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %> 

@@ -32,6 +32,11 @@ app.get("/items", (req, res) => {
   });
 })
 
+// New Route
+app.get("/items/new", (req, res) => {
+  res.render("new")
+})
+
 // Show Route
 app.get("/items/:id", (req, res) => {
   connection.query(`SELECT * FROM items WHERE item_id=${req.params.id}`, function(err, row, field) {
@@ -67,4 +72,4 @@ app.delete("/items/:id", (req, res) => {
   })
 })
 
-app.listen(3000, () => console.log("Serving at port 3000"))
+app.listen(4000, () => console.log("Serving at port 4000"))

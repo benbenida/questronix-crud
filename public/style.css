@@ -1,0 +1,14 @@
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.content {
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.363);
+  margin-top: 3rem;
+  padding: 1em;
+}
